@@ -1,28 +1,53 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navItems = [
-  { name: "Home", href: "/#home" },
-  { name: "Conference", href: "/conferences" },
-  { name: "Certificates", href: "/certificates" },
-  { name: "Seminar", href: "/seminar" },
-  { name: "Contact", href: "/#contact" },
+  { name: "Home", href: "/#home", isHash: true },
+  { name: "Conference", href: "/conferences", isHash: false },
+  { name: "Certificates", href: "/certificates", isHash: false },
+  { name: "Seminar", href: "/seminar", isHash: false },
+  { name: "Contact", href: "/#contact", isHash: true },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Dark mode state with persistent default
+  // Dark mode with persistence
   const [dark, setDark] = useState(() => {
     const saved = localStorage.getItem("dark-mode");
     return saved ? JSON.parse(saved) : false;
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    const root = document.documentElement;
     root.classList.toggle("dark", dark);
     localStorage.setItem("dark-mode", JSON.stringify(dark));
   }, [dark]);
+
+  const renderNavItem = (item: typeof navItems[number]) => {
+    if (item.isHash) {
+      return (
+        <a
+          href={item.href}
+          onClick={() => setIsOpen(false)}
+          className="px-3 py-2 text-sm font-medium text-muted-foreground rounded-md transition-all duration-300 hover:text-foreground hover:bg-muted/50 hover:ring-2 hover:ring-accent hover:ring-offset-1"
+        >
+          {item.name}
+        </a>
+      );
+    }
+
+    return (
+      <Link
+        to={item.href}
+        onClick={() => setIsOpen(false)}
+        className="px-3 py-2 text-sm font-medium text-muted-foreground rounded-md transition-all duration-300 hover:text-foreground hover:bg-muted/50 hover:ring-2 hover:ring-accent hover:ring-offset-1"
+      >
+        {item.name}
+      </Link>
+    );
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[hsl(var(--background)/98%)] backdrop-blur-md border-b border-border shadow-sm">
@@ -46,18 +71,11 @@ export const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-5">
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground rounded-md transition-all duration-300 hover:text-foreground hover:bg-muted/50 hover:ring-2 hover:ring-accent hover:ring-offset-1"
-            >
-              {item.name}
-            </a>
+            <div key={item.name}>{renderNavItem(item)}</div>
           ))}
         </div>
 
-        {/* Theme Toggle */}
+        {/* Theme Toggle (Desktop) */}
         <div className="hidden md:flex items-center space-x-3">
           <button
             onClick={() => setDark(!dark)}
@@ -97,14 +115,7 @@ export const Navbar = () => {
         >
           <div className="flex flex-col px-4">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:shadow-[0_0_8px_hsl(var(--accent))] rounded-md transition-all duration-300"
-              >
-                {item.name}
-              </a>
+              <div key={item.name}>{renderNavItem(item)}</div>
             ))}
           </div>
         </div>
