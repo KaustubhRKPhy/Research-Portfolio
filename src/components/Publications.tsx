@@ -33,7 +33,7 @@ const projects = [
     ),
     journal: "Journal of Energy Storage - 9.8 ",
     year: "February 2026",
-    link: "",
+    link: "https://doi.org/10.1016/j.est.2025.119854",
     description: [
       "Fabricated Co–Mn layered double hydroxide (CoMn-LDH) thin films on stainless steel using a single-step hydrothermal method.",
       "XRD analysis revealed an average crystallite size of ~21 nm.",

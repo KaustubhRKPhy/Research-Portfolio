@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Award, Building2 } from "lucide-react";
 
 const conferences = [
+   {
+    name: "PM-USHA Sponsored Value Added Course on Applications of Python in Physics",
+    date: "January 27-31, 2026",
+    year: "2026",
+    role: "Participant",
+    location: "Kolhapur, India (On-site)",
+    organiser: "Department of Physics, Shivaji University, Kolhapur (MH), India",
+  },
   {
     name: "International Webinar on Quantum Computing for the Next Generation: Exploring Opportunities",
     date: "February 16, 2025",

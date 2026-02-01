@@ -5,6 +5,7 @@ import {
   Download,
   Mail,
   Phone,
+  MapPin,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -50,7 +51,7 @@ export const Hero = () => {
         <div className="mb-12">
           {/* Profile Image */}
           <div className="w-56 h-56 mx-auto mb-8 rounded-lg overflow-hidden border-4 border-accent shadow-lg shadow-accent/20 flex items-center justify-center">
-          <img
+            <img
               src="/profile.png"
               alt="Kaustubh R. Kumbhar"
               className="w-full h-full object-cover"
@@ -81,7 +82,7 @@ export const Hero = () => {
 
           {/* Summary */}
           <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto font-semibold">
-            | Former Data Scientist
+            PhD Candidate @QUT, Brisbane (AU) | Former Data Scientist
           </p>
 
           {/* Buttons */}
@@ -139,14 +140,6 @@ export const Hero = () => {
               <GraduationCap size={28} />
               <span className="mt-1 text-sm">Scholar</span>
             </a>
-
-            {/* <a
-              href="mailto:kaustubhrk.phy@gmail.com"
-              className="flex flex-col items-center text-black hover:text-accent transition-colors duration-200"
-            >
-              <Mail size={28} />
-              <span className="mt-1 text-sm">Email</span>
-            </a> */}
           </div>
         </div>
       </div>
@@ -157,12 +150,12 @@ export const Hero = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <PopoverTrigger asChild>
-              <Button
-                size="icon"
-                className="fixed bottom-6 right-6 z-50 rounded-full bg-accent text-white shadow-lg hover:bg-blue-500 active:bg-blue-900 transition-all duration-300"
-              >
-                <Phone className="h-6 w-6" />
-              </Button>
+                <Button
+                  size="icon"
+                  className="fixed bottom-6 right-6 z-50 rounded-full bg-accent text-white shadow-lg hover:bg-blue-500 active:bg-blue-900 transition-all duration-300"
+                >
+                  <Phone className="h-6 w-6" />
+                </Button>
               </PopoverTrigger>
             </TooltipTrigger>
 
@@ -174,26 +167,24 @@ export const Hero = () => {
           <PopoverContent
             side="left"
             align="end"
-            className="
-              bg-card text-card-foreground
-              border border-border
-              shadow-2xl
-            "
+            className="bg-card text-card-foreground border border-border shadow-2xl w-80"
           >
-            <h4 className="font-semibold text-lg mb-3">Contact Details</h4>
+            <h4 className="font-semibold text-lg mb-4">Contact Details</h4>
 
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2">
+            <ul className="space-y-3 text-sm">
+              {/* Phone */}
+              <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-accent" />
                 <a
-                  href="tel:+919999999999"
+                  href="tel:+919834605414"
                   className="hover:underline"
                 >
                   +91 98346 05414
                 </a>
               </li>
 
-              <li className="flex items-center gap-2">
+              {/* Email */}
+              <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-accent" />
                 <a
                   href="mailto:kaustubhrk.phy@gmail.com"
@@ -201,6 +192,28 @@ export const Hero = () => {
                 >
                   kaustubhrk.phy@gmail.com
                 </a>
+              </li>
+
+              {/* Divider */}
+              <div className="h-px bg-border my-2" />
+
+              {/* Office Address */}
+              <li className="flex items-start gap-3">
+                <MapPin className="h-4 w-4 text-accent mt-0.5" />
+                <div className="leading-snug">
+                  <p className="font-semibold">Office Address</p>
+                  <a
+                    href="https://maps.app.goo.gl/Aa6edr6oCuYpAHhF9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:underline"
+                  >
+                    QUT Gardens Point P Block,<br />
+                    P Block Level/2 Gardens Point Rd,<br />
+                    Brisbane City QLD 4000, Australia<br />
+
+                  </a>
+                </div>
               </li>
             </ul>
           </PopoverContent>
