@@ -4,19 +4,19 @@ import { FileText, ExternalLink } from "lucide-react";
 const seminars = [
   {
     title: "Introduction to Machine Learning",
-    pdf: "/pdfs/Introduction to Machine Learning.pdf",
+    pdf: "/public/pdfs/Introduction to Machine Learning.pdf",
   },
   {
     title: "Electron Spin Resonance (ESR)",
-    pdf: "/pdfs/Electron Spin Resonance.pdf",
+    pdf: "/public/pdfs/Electron Spin Resonance.pdf",
   },
   {
     title: "Rydeberg Constant",
-    pdf: "/pdfs/Rydeberg Constant.pdf",
+    pdf: "/public/pdfs/Rydeberg Constant.pdf",
   },
   {
     title: "On the Theory of Relativity",
-    pdf: "/pdfs/On the Theory of Relativity.pdf",
+    pdf: "/public/pdfs/On the Theory of Relativity.pdf",
   },
 ];
 
