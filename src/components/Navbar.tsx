@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
   { name: "Home", href: "/#home", isHash: true },
@@ -12,6 +12,7 @@ const navItems = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   // Dark mode with persistence
   const [dark, setDark] = useState(() => {
@@ -25,15 +26,55 @@ export const Navbar = () => {
     localStorage.setItem("dark-mode", JSON.stringify(dark));
   }, [dark]);
 
-  const renderNavItem = (item: typeof navItems[number]) => {
+  const isActiveItem = (item: typeof navItems[number]) => {
+    if (item.isHash) {
+      const targetHash = item.href.split("#")[1] ?? "";
+
+      if (location.pathname !== "/") {
+        return false;
+      }
+
+      if (targetHash === "home") {
+        return location.hash === "" || location.hash === "#home";
+      }
+
+      return location.hash === `#${targetHash}`;
+    }
+
+    return location.pathname === item.href;
+  };
+
+  const renderNavItem = (item: typeof navItems[number], isDesktop = false) => {
+    const isActive = isActiveItem(item);
+    const navClassName = isDesktop
+      ? `group relative px-1 py-2 text-sm font-medium transition-colors duration-300 hover:text-foreground ${
+          isActive ? "text-foreground" : "text-muted-foreground"
+        }`
+      : `px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:text-foreground hover:bg-muted/50 ${
+          isActive ? "text-foreground" : "text-muted-foreground"
+        }`;
+
+    const navLabel = (
+      <>
+        <span>{item.name}</span>
+        {isDesktop ? (
+          <span
+            className={`absolute inset-x-0 -bottom-0.5 mx-auto h-px bg-accent transition-all duration-300 group-hover:w-full ${
+              isActive ? "w-full" : "w-0"
+            }`}
+          />
+        ) : null}
+      </>
+    );
+
     if (item.isHash) {
       return (
         <a
           href={item.href}
           onClick={() => setIsOpen(false)}
-          className="px-3 py-2 text-sm font-medium text-muted-foreground rounded-md transition-all duration-300 hover:text-foreground hover:bg-muted/50 hover:ring-2 hover:ring-accent hover:ring-offset-1"
+          className={navClassName}
         >
-          {item.name}
+          {navLabel}
         </a>
       );
     }
@@ -42,9 +83,9 @@ export const Navbar = () => {
       <Link
         to={item.href}
         onClick={() => setIsOpen(false)}
-        className="px-3 py-2 text-sm font-medium text-muted-foreground rounded-md transition-all duration-300 hover:text-foreground hover:bg-muted/50 hover:ring-2 hover:ring-accent hover:ring-offset-1"
+        className={navClassName}
       >
-        {item.name}
+        {navLabel}
       </Link>
     );
   };
@@ -71,7 +112,7 @@ export const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-5">
           {navItems.map((item) => (
-            <div key={item.name}>{renderNavItem(item)}</div>
+            <div key={item.name}>{renderNavItem(item, true)}</div>
           ))}
         </div>
 

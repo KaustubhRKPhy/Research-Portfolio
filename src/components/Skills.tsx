@@ -1,5 +1,4 @@
 import { Code2, FlaskConical, Wrench, Microscope } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 const skillCategories = [
   {
@@ -78,7 +77,7 @@ export const Skills = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        <div className="flex max-w-6xl flex-col gap-6 mx-auto">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
@@ -86,16 +85,16 @@ export const Skills = () => {
                 key={index}
                 className="group relative bg-card rounded-2xl border-2 border-border 
                            overflow-hidden transition-all duration-500 ease-out
-                           hover:border-accent/50 hover:shadow-[0_0_20px_hsl(var(--accent))] hover:-translate-y-2"
+                           hover:border-accent/50 hover:shadow-[0_0_20px_hsl(var(--accent))] hover:-translate-y-1"
               >
                 {/* Gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent 
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 {/* Content */}
                 <div className="relative p-6">
                   {/* Header with icon */}
-                  <div className="flex items-start gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-5">
                     <div className="relative">
                       <div className="absolute inset-0 bg-accent/20 rounded-lg blur-xl 
                                       opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -105,7 +104,7 @@ export const Skills = () => {
                         <Icon className="text-accent" size={16} strokeWidth={2} />
                       </div>
                     </div>
-                    
+
                     <div className="flex-1">
                       <h3 className="text-lg font-bold text-foreground
                                      group-hover:text-accent transition-colors duration-300">
@@ -117,20 +116,18 @@ export const Skills = () => {
                     </div>
                   </div>
 
-                  {/* Skills grid */}
+                  {/* Skills */}
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, skillIndex) => (
-                      <Badge
+                      <span
                         key={skillIndex}
-                        variant="outline"
-                        className="px-2.5 py-1 text-xs font-medium
-                                   border-border bg-background/50
-                                   hover:border-accent hover:bg-accent/10 hover:text-accent
-                                   hover:shadow-lg hover:scale-105
-                                   transition-all duration-300 cursor-default"
+                       className="px-3 py-1.5 text-xs font-medium rounded-full
+                        bg-background text-foreground border-2 border-border
+                        transition-all duration-300 cursor-default
+                        hover:border-accent hover:bg-accent/10 hover:text-accent hover:scale-105"
                       >
                         {skill}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
                 </div>

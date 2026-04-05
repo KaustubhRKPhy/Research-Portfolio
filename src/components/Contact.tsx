@@ -1,15 +1,8 @@
 import { useState } from "react";
-import { Send, User, Mail, MessageCircle, MessageSquare } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 import emailjs from "@emailjs/browser";
 import { useToast } from "@/hooks/use-toast";
@@ -38,7 +31,7 @@ export const Contact = () => {
     const templateParams = {
       name: formData.name,
       email: formData.email,
-      reason: formData.reason,
+      institution: formData.reason,
       message: formData.message,
       time: new Date().toLocaleString(),
     };
@@ -72,96 +65,135 @@ export const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-card/30">
       <div className="container-custom">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          <span className="gradient-text">Get in Touch</span>
-        </h2>
+        <div className="mx-auto max-w-6xl">
+          <div className="relative overflow-hidden rounded-[2rem] border-2 border-border bg-[linear-gradient(180deg,hsl(var(--card))_0%,hsl(var(--background))_100%)] px-6 py-8 sm:px-8 md:px-10 md:py-10 lg:px-14 lg:py-14">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_hsla(var(--accent),0.08),_transparent_38%),radial-gradient(circle_at_85%_90%,_hsla(var(--secondary),0.08),_transparent_32%)] pointer-events-none" />
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Interested in collaborating on research projects or have questions about my work? 
-          Let's connect and explore opportunities together!
-        </p>
+            <div className="relative grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14">
+              <div className="flex flex-col">
+                <div>
+                  <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.35em] text-accent">
+                    Collaboration
+                  </p>
+                  <h2 className="hero-headline max-w-md text-5xl leading-[0.95] tracking-[-0.03em] text-foreground sm:text-6xl">
+                    Get in touch                  
+                  </h2>
+                  <p className="mt-8 max-w-md text-base leading-8 text-muted-foreground">
+                    Open for research inquiries, collaborative projects on ML in Material Science. Let's contribute to computational and experimental Physics together.
+                  </p>
+                </div>
 
-        <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="mt-8 space-y-5">
+                  <div className="flex items-center gap-4 rounded-2xl border-2 border-border bg-background px-4 py-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/12 text-accent">
+                      <Mail className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                        Email
+                      </p>
+                      <a
+                        href="mailto:kaustubhrk.phy@gmail.com"
+                        className="mt-1 block text-base text-foreground transition-colors"
+                      >
+                        kaustubhrk.phy@gmail.com
+                      </a>
+                    </div>
+                  </div>
 
-            {/* Name Input With Icon */}
-            <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
-              <Input
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                required
-                className="pl-10 bg-card text-foreground border-border focus:border-accent"
-              />
+                  <div className="flex items-center gap-4 rounded-2xl border-2 border-border bg-background px-4 py-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/12 text-accent">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                        Current Office
+                      </p>
+                      <p className="mt-1 text-base text-foreground">
+                        Brisbane, Australia
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div className="grid gap-5 md:grid-cols-2">
+                  <label className="block">
+                    <span className="mb-3 block text-[11px] font-medium uppercase tracking-[0.18em] text-[hsl(var(--muted-foreground))]">
+                      Name
+                    </span>
+                    <Input
+                      placeholder=""
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                      required
+                      className="h-12 rounded-none border-0 border-b border-border bg-transparent px-0 text-foreground shadow-none outline-none ring-0 transition-colors focus:border-0 focus:border-b focus:border-accent/60 focus:outline-none focus:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:border-accent/60 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="mb-3 block text-[11px] font-medium uppercase tracking-[0.18em] text-[hsl(var(--muted-foreground))]">
+                      Institution
+                    </span>
+                    <Input
+                      placeholder=""
+                      value={formData.reason}
+                      onChange={(e) =>
+                        setFormData({ ...formData, reason: e.target.value })
+                      }
+                      required
+                      className="h-12 rounded-none border-0 border-b border-border bg-transparent px-0 text-foreground shadow-none outline-none ring-0 transition-colors focus:border-0 focus:border-b focus:border-accent/60 focus:outline-none focus:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:border-accent/60 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                    />
+                  </label>
+                </div>
+
+                <label className="block">
+                  <span className="mb-3 block text-[11px] font-medium uppercase tracking-[0.18em] text-[hsl(var(--muted-foreground))]">
+                    Email
+                  </span>
+                  <Input
+                    type="email"
+                    placeholder=""
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    required
+                    className="h-12 rounded-none border-0 border-b border-border bg-transparent px-0 text-foreground shadow-none outline-none ring-0 transition-colors focus:border-0 focus:border-b focus:border-accent/60 focus:outline-none focus:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:border-accent/60 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  />
+                </label>
+
+                <label className="block">
+                  <span className="mb-3 block text-[11px] font-medium uppercase tracking-[0.18em] text-[hsl(var(--muted-foreground))]">
+                    Inquiry
+                  </span>
+                  <Textarea
+                    placeholder=""
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    required
+                    rows={5}
+                    className="min-h-[7.5rem] rounded-none border-0 border-b border-border bg-transparent px-0 pb-3 text-foreground shadow-none outline-none ring-0 resize-none transition-colors focus:border-0 focus:border-b focus:border-accent/60 focus:outline-none focus:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:border-accent/60 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  />
+                </label>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={loading}
+                  className="mt-2 h-12 rounded-md bg-[linear-gradient(90deg,hsl(var(--accent-200))_0%,hsl(var(--secondary-200))_100%)] px-6 text-sm font-semibold uppercase tracking-[0.18em] text-black hover:opacity-95 dark:border-accent/30 dark:bg-[linear-gradient(90deg,hsl(var(--accent))_0%,hsl(var(--secondary))_100%)] dark:text-white"
+                >
+                  <Send className="mr-2 h-4 w-4" />
+                  {loading ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
             </div>
-
-            {/* Email Input With Icon */}
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
-              <Input
-                type="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                required
-                className="pl-10 bg-card text-foreground border-border focus:border-accent"
-              />
-            </div>
-
-            {/* Select With Icon */}
-            <div className="relative">
-              <MessageSquare className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
-              <Select
-                value={formData.reason}
-                onValueChange={(value) =>
-                  setFormData({ ...formData, reason: value })
-                }
-                required
-              >
-                <SelectTrigger className="pl-10 bg-card text-foreground border-border focus:border-accent">
-                  <SelectValue placeholder="Reason for Contact" />
-                </SelectTrigger>
-
-                <SelectContent className="bg-card border border-border">
-                  <SelectItem value="collaboration">Collaboration</SelectItem>
-                  <SelectItem value="research">Research Query</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Message Textarea With Icon */}
-            <div className="relative">
-              <MessageCircle className="absolute left-3 top-4 text-muted-foreground h-5 w-5" />
-              <Textarea
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-                required
-                rows={6}
-                className="pl-10 bg-card text-foreground border-border focus:border-accent resize-none"
-              />
-            </div>
-
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              size="lg"
-              disabled={loading}
-              className="w-full bg-accent hover:bg-accent/90 text-white font-semibold"
-            >
-              <Send className="mr-2 h-5 w-5" />
-              {loading ? "Sending..." : "Send Message"}
-            </Button>
-
-          </form>
+          </div>
         </div>
       </div>
     </section>

@@ -71,11 +71,11 @@ export const Experience = () => {
     <section id="experience" className="py-20 bg-card/30">
       <div className="container-custom">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          <span className="gradient-text">Work History</span>
+          <span className="gradient-text">Professional Journey</span>
         </h2>
 
         {/* Desktop Timeline View */}
-        <div ref={containerRef} className="hidden xl:block relative max-w-4xl mx-auto">
+        <div ref={containerRef} className="relative mx-auto hidden max-w-6xl xl:block">
           <div className="absolute left-5 top-0 w-1 bg-accent/20 h-full z-0"></div>
           <div
             className="absolute left-5 top-0 w-1 bg-accent origin-top transition-all duration-150 z-10"
@@ -85,7 +85,7 @@ export const Experience = () => {
           {experienceData.map((exp, index) => (
             <motion.div
               key={index}
-              className="relative pl-16 mb-12"
+              className="relative mb-4 pl-16 last:mb-0"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -95,11 +95,14 @@ export const Experience = () => {
                 <Calendar size={20} className="text-white" />
               </div>
 
-              <span className="absolute -left-32 top-1/2 transform -translate-y-1/2 text-sm font-semibold text-accent whitespace-nowrap w-28 text-right">
-                {exp.period}
-              </span>
-
               <div className="group bg-card p-6 rounded-lg border border-border shadow-md transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--accent))] hover:-translate-y-1">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent bg-background border border-border rounded-full px-3 py-1 transition-all duration-300 group-hover:border-accent">
+                    <Calendar size={11} />
+                    {exp.period}
+                  </span>
+                </div>
+
                 <div className="flex items-center gap-3 mb-2">
                   <Briefcase size={16} className="text-accent flex-shrink-0" />
                   <div>
@@ -109,7 +112,7 @@ export const Experience = () => {
                     >
                       {exp.role}
                     </h3>
-                    
+
                     <div
                       className="h-0.5 w-8 bg-accent/30 rounded-full
                                  transition-all duration-500
@@ -148,7 +151,7 @@ export const Experience = () => {
                 {/* Header with period badge */}
                 <div className="bg-accent/5 px-4 py-3 border-b border-border flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent">
                       <Calendar size={16} className="text-white" />
                     </div>
                     <Briefcase size={16} className="text-accent flex-shrink-0" />
@@ -159,7 +162,7 @@ export const Experience = () => {
                       >
                         {exp.role}
                       </h3>
-                      
+
                       <div
                         className="h-0.5 w-8 bg-accent/30 rounded-full
                                    transition-all duration-500
@@ -167,6 +170,10 @@ export const Experience = () => {
                       />
                     </div>
                   </div>
+                  <span className="ml-2 inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-border bg-background px-2.5 py-1 text-xs font-semibold text-accent">
+                    <Calendar size={10} />
+                    {exp.period}
+                  </span>
                 </div>
 
                 {/* Content */}
@@ -174,10 +181,6 @@ export const Experience = () => {
                   <p className="text-accent font-semibold mb-2 text-base">{exp.company}</p>
 
                   <div className="flex flex-col gap-2 mb-3">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Calendar size={14} className="text-accent flex-shrink-0" />
-                      <span>{exp.period}</span>
-                    </div>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <MapPin size={14} className="text-accent flex-shrink-0" />
                       <span>{exp.location}</span>

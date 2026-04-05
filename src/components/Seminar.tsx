@@ -3,16 +3,20 @@ import { FileText, ExternalLink } from "lucide-react";
 
 const seminars = [
   {
-    title: "Recent Advances in Thin Film Solar Cell Technologies",
-    pdf: "/seminars/solar-cell-seminar.pdf",
+    title: "Introduction to Machine Learning",
+    pdf: "/pdfs/Introduction to Machine Learning.pdf",
   },
   {
-    title: "Machine Learning Applications in Energy Storage Devices",
-    pdf: "/seminars/ml-energy-storage.pdf",
+    title: "Electron Spin Resonance (ESR)",
+    pdf: "/pdfs/Electron Spin Resonance.pdf",
   },
   {
-    title: "Nanostructured Materials for Next-Generation Supercapacitors",
-    pdf: "/seminars/nanostructured-materials.pdf",
+    title: "Rydeberg Constant",
+    pdf: "/pdfs/Rydeberg Constant.pdf",
+  },
+  {
+    title: "On the Theory of Relativity",
+    pdf: "/pdfs/On the Theory of Relativity.pdf",
   },
 ];
 
@@ -62,10 +66,10 @@ export const Seminar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium 
-                             text-accent border border-accent rounded-full px-4 py-1.5
-                             hover:bg-accent hover:text-white
-                             hover:shadow-[0_0_10px_hsl(var(--accent))]
-                             transition-all duration-300 w-fit"
+                            text-foreground border border-border rounded-full px-4 py-1.5
+                            hover:bg-accent hover:text-white
+                            hover:shadow-[0_0_10px_hsl(var(--accent))]
+                            transition-all duration-300 w-fit"
                 >
                   <FileText className="w-4 h-4" />
                   View here

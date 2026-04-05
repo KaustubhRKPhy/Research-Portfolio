@@ -1,24 +1,12 @@
-import {
-  Github,
-  Linkedin,
-  GraduationCap,
-  Download,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
-
+import { ArrowRight, Github, GraduationCap, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import RotatingText from "./RotatingText";
 import { Button } from "@/components/ui/button";
-import RotatingText from "@/components/RotatingText";
-import Prism from "./Prism";
-
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 import {
   Popover,
   PopoverContent,
@@ -29,196 +17,127 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative mt-5 min-h-screen flex items-center justify-center pt-16 overflow-hidden"
+      className="relative isolate flex min-h-screen flex-col overflow-hidden pt-16"
     >
-      {/* Prism background */}
-      <div className="absolute inset-0 -z-10">
-        <Prism
-          animationType="rotate"
-          timeScale={0.5}
-          height={3.5}
-          baseWidth={5.5}
-          scale={3.6}
-          hueShift={0}
-          colorFrequency={1}
-          noise={0.5}
-          glow={1}
-        />
-      </div>
+      {/* Background */}
+      <div className="absolute inset-0 -z-10 bg-[hsl(var(--background))]" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_top_left,_hsla(var(--accent),0.18),_transparent_45%),radial-gradient(circle_at_85%_25%,_hsla(var(--accent),0.12),_transparent_30%)]" />
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.025]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)",
+          backgroundSize: "32px 32px",
+        }}
+      />
 
-      {/* Hero content */}
-      <div className="container-custom text-center relative z-10">
-        <div className="mb-12">
-          {/* Profile Image */}
-          <div className="w-56 h-56 mx-auto mb-8 rounded-lg overflow-hidden border-4 border-accent shadow-lg shadow-accent/20 flex items-center justify-center">
-            <img
-              src="/profile.png"
-              alt="Kaustubh R. Kumbhar"
-              className="w-full h-full object-cover"
-            />
-          </div>
+      <div className="container-custom relative z-10 flex flex-1 flex-col justify-center py-20">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_18rem] lg:items-stretch lg:gap-16 xl:grid-cols-[minmax(0,1.5fr)_20rem] xl:gap-20">
 
-          {/* Name */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-2 text-foreground">
-            Kaustubh R. Kumbhar
-          </h1>
+          {/* ── LEFT ── */}
+          <div className="flex flex-col">
 
-          {/* Rotating Text */}
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4 flex justify-center">
-            <span className="gradient-text mr-2">Researcher in</span>
-            <RotatingText
-              texts={["Physics", "Material Science", "Machine Learning"]}
-              mainClassName="px-2 sm:px-2 md:px-3 bg-accent/30 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 rounded-lg"
-              staggerFrom="last"
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: "-120%", opacity: 0 }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-              transition={{ type: "tween", duration: 0.6 }}
-              rotationInterval={2000}
-            />
-          </h2>
+            <div className="mb-6 flex items-center gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                Scientific Portfolio
+              </p>
+            </div>
 
-          {/* Summary */}
-          <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto font-semibold">
-            PhD Candidate @QUT, Brisbane (AU) | Former Data Scientist
-          </p>
+            <h1 className="hero-headline max-w-4xl text-5xl font-bold leading-[0.95] tracking-[-0.03em] text-[hsl(var(--foreground))] sm:text-7xl xl:text-8xl">
+              Kaustubh R. Kumbhar
+            </h1>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" asChild>
+            <div className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-2 text-xl sm:text-2xl text-[hsl(var(--muted-foreground))]">
+              <span className="text-accent font-medium">Researcher in</span>
+              <RotatingText
+                texts={["Physics", "Materials Science", "Machine Learning"]}
+                mainClassName="inline-flex items-center text-[hsl(var(--foreground))] font-semibold tracking-[-0.02em]"
+                splitLevelClassName="overflow-hidden"
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: "-120%", opacity: 0 }}
+                transition={{ type: "tween", duration: 0.5 }}
+                rotationInterval={2000}
+              />
+            </div>
+
+            <p className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-1 text-base text-[hsl(var(--muted-foreground))]">
+              <span className="font-semibold text-lg text-[hsl(var(--foreground))]">PhD Candidate at QUT, Brisbane (AU)</span>
+              <span className="select-none text-[hsl(var(--muted-foreground)/0.4)]">|</span>
+              <span className="text-base">Former Data Scientist</span>
+            </p>
+
+            <p className="mt-5 max-w-[46rem] text-base leading-8 text-[hsl(var(--muted-foreground))] sm:text-base">
+              Centre for Materials Science and School of Chemistry and Physics,
+              Queensland University of Technology, Brisbane, QLD 4001, Australia
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-[hsl(var(--accent-foreground))] shadow-[0_12px_30px_hsla(var(--accent),0.28)] transition-transform duration-300 hover:-translate-y-0.5 hover:opacity-95"
+              >
+                Explore Research
+                <ArrowRight className="h-4 w-4" />
+              </a>
               <a
                 href="#contact"
-                className="flex items-center justify-center bg-accent text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-500 active:bg-blue-900 transition-colors duration-300"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-7 py-3.5 text-sm font-semibold text-[hsl(var(--foreground))] backdrop-blur-sm transition-colors duration-300 hover:border-accent/40 hover:bg-accent/5"
               >
-                <Mail className="mr-2 h-5 w-5" />
-                Let's Connect!
+                Collaborate
               </a>
-            </Button>
-
-            <Button size="lg" variant="outline" asChild>
-              <a
-                href="https://qrr.to/9af12c32"
-                download
-                className="flex items-center border-foreground text-foreground font-semibold hover:text-white hover:border-white active:text-white active:border-white transition-colors duration-300 px-6 py-3 rounded-lg"
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Download CV
-              </a>
-            </Button>
+            </div>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex items-center justify-center gap-10">
-            <a
-              href="https://github.com/KaustubhRKPhy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center text-black hover:text-accent transition-colors duration-200"
-            >
-              <Github size={28} />
-              <span className="mt-1 text-sm">GitHub</span>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/kaustubh-kumbhar-4b841b293/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center text-black hover:text-accent transition-colors duration-200"
-            >
-              <Linkedin size={28} />
-              <span className="mt-1 text-sm">LinkedIn</span>
-            </a>
-
-            <a
-              href="https://scholar.google.com/citations?user=x6pyy7UAAAAJ&hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center text-black hover:text-accent transition-colors duration-200"
-            >
-              <GraduationCap size={28} />
-              <span className="mt-1 text-sm">Scholar</span>
-            </a>
+          {/* ── RIGHT: Photo Card */}
+          <div className="mx-auto flex w-full max-w-[16.5rem] flex-col self-stretch sm:max-w-[18rem] lg:mx-0 lg:max-w-none">
+            <div className="relative flex flex-col h-full">
+              <div className="absolute inset-8 rounded-3xl bg-accent/20 blur-3xl pointer-events-none" />
+              <div className="relative flex flex-col h-full w-full rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:p-5">
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[hsl(var(--card))] lg:flex-1 lg:min-h-0">
+                  <img
+                    src="/profile.png"
+                    alt="Kaustubh Kumbhar"
+                    className="aspect-[4/5] w-full object-cover object-[center_15%] lg:h-full lg:aspect-auto"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent" />
+                </div>
+                <div className="mt-4 flex items-center justify-around">
+                  <a
+                    href="https://scholar.google.com/citations?user=x6pyy7UAAAAJ&hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-1 text-[hsl(var(--muted-foreground))] transition-colors hover:text-accent"
+                  >
+                    <GraduationCap className="h-5 w-5" />
+                    <span className="text-[11px] font-medium">Scholar</span>
+                  </a>
+                  <div className="h-6 w-px bg-white/10" />
+                  <a
+                    href="https://www.linkedin.com/in/kaustubh-kumbhar-4b841b293/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-1 text-[hsl(var(--muted-foreground))] transition-colors hover:text-accent"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                    <span className="text-[11px] font-medium">LinkedIn</span>
+                  </a>
+                  <div className="h-6 w-px bg-white/10" />
+                  <a
+                    href="https://github.com/KaustubhRKPhy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-1 text-[hsl(var(--muted-foreground))] transition-colors hover:text-accent"
+                  >
+                    <Github className="h-5 w-5" />
+                    <span className="text-[11px] font-medium">GitHub</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* ================= Floating Contact Button ================= */}
-      <TooltipProvider>
-        <Popover>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <PopoverTrigger asChild>
-                <Button
-                  size="icon"
-                  className="fixed bottom-6 right-6 z-50 rounded-full bg-accent text-white shadow-lg hover:bg-blue-500 active:bg-blue-900 transition-all duration-300"
-                >
-                  <Phone className="h-6 w-6" />
-                </Button>
-              </PopoverTrigger>
-            </TooltipTrigger>
-
-            <TooltipContent side="left">
-              <p className="font-medium">Contact me</p>
-            </TooltipContent>
-          </Tooltip>
-
-          <PopoverContent
-            side="left"
-            align="end"
-            className="bg-card text-card-foreground border border-border shadow-2xl w-80"
-          >
-            <h4 className="font-semibold text-lg mb-4">Contact Details</h4>
-
-            <ul className="space-y-3 text-sm">
-              {/* Phone */}
-              <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-accent" />
-                <a
-                  href="tel:+919834605414"
-                  className="hover:underline"
-                >
-                  +91 98346 05414
-                </a>
-              </li>
-
-              {/* Email */}
-              <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-accent" />
-                <a
-                  href="mailto:kaustubhrk.phy@gmail.com"
-                  className="hover:underline"
-                >
-                  kaustubhrk.phy@gmail.com
-                </a>
-              </li>
-
-              {/* Divider */}
-              <div className="h-px bg-border my-2" />
-
-              {/* Office Address */}
-              <li className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 text-accent mt-0.5" />
-                <div className="leading-snug">
-                  <p className="font-semibold">Office Address</p>
-                  <a
-                    href="https://maps.app.goo.gl/Aa6edr6oCuYpAHhF9"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:underline"
-                  >
-                    QUT Gardens Point P Block,<br />
-                    P Block Level/2 Gardens Point Rd,<br />
-                    Brisbane City QLD 4000, Australia<br />
-
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </PopoverContent>
-        </Popover>
-      </TooltipProvider>
     </section>
   );
 };
