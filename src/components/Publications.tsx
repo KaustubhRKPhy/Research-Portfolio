@@ -37,20 +37,20 @@ const projects = [
         R. S. Redekar, <strong>K. R. Kumbhar</strong>, N. L. Tarwal*
       </>
     ),
-    journal: "Elsevier",
+    journal: "Elsevier Book Chapter (in book: Ozone Gas Sensing Technologies)",
     impactFactor: "",
-    year: "January 2026",
-    link: "",
+    year: "2026",
+    link: "https://doi.org/10.1016/B978-0-443-33839-7.00011-2",
   },
   {
     title:
-      "Emerging Functionalities and Machine Learning Integration in Next Gen Supercapacitors",
+      "Emerging Functionalities and Machine Learning Integration in Next Generation Supercapacitors",
     authors: (
       <>
         <strong>K. R. Kumbhar</strong>, D. S. Dhawale*
       </>
     ),
-    journal: "Under Submission",
+    journal: "Submitted",
     impactFactor: "",
     year: "March 2026",
     link: "",

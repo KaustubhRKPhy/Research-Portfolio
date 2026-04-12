@@ -64,7 +64,7 @@ export const Hero = () => {
             <p className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-1 text-base text-[hsl(var(--muted-foreground))]">
               <span className="font-semibold text-lg text-[hsl(var(--foreground))]">PhD Candidate at QUT, Brisbane (AU)</span>
               <span className="select-none text-[hsl(var(--muted-foreground)/0.4)]">|</span>
-              <span className="text-base">Former Data Scientist</span>
+              <span className="text-base">Former Data Scientist & ML Engineer</span>
             </p>
 
             <p className="mt-5 max-w-[46rem] text-base leading-8 text-[hsl(var(--muted-foreground))] sm:text-base">

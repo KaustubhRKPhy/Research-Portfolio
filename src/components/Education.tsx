@@ -8,9 +8,9 @@ const educationData = [
     institution:
       "School of Chemistry & Physics, Queensland University of Technology (QS-#226), Brisbane, Queensland, Australia",
     period: "Feb 2026 – Present",
-    description: ["Principle Investigator: Dr. Mahboobeh Shahbazi",
-      "Research Area: Magnetocaloric Materials and Hydrogen Liquefaction",
-      "Scholorship: QUT Postgraduate Research Award (QUTPRA)",
+    description: ["Principal Supervisor: Dr. Mahboobeh Shahbazi Manshadi",
+      "Research Area: Magnetocaloric Materials for Hydrogen Liquefaction",
+      "Scholarship: QUT Postgraduate Research Award (QUTPRA)",
     ],
   },
   {
